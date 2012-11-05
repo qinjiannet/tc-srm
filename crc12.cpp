@@ -12,7 +12,7 @@ uint32_t PATTERN = 0x180F; //x12 + x11 + x3 + x2 + x + 1
 
 uint32_t crc12(char* data) {
     int len = strlen(data);
-    uint32_t reamainder = 0;
+    uint32_t remainder = 0;
     uint32_t nremainder = 0;
     for (int i = 0; i < len; i++) {
         for (int j = CHAR_SIZE - 1; j >= 0; j--) {
@@ -34,10 +34,6 @@ uint32_t crc12(char* data) {
     return remainder;
 }
 
-char* char_to_binary(char ch) {
-    return num_to_binary(ch,CHAR_SIZE);
-}
-
 char* num_to_binary(int num, int size) {
     char* output = (char*)malloc((size + 1) * sizeof(char));
     if (output == NULL)
@@ -48,6 +44,10 @@ char* num_to_binary(int num, int size) {
     }
     output[size] = 0;
     return output;
+}
+
+char* char_to_binary(char ch) {
+    return num_to_binary(ch,CHAR_SIZE);
 }
 
 int main () {
